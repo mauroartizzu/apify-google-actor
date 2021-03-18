@@ -17,10 +17,22 @@ Apify.main(async () => {
         
     };
 
+    
     // Set up the crawler, passing a single options object as an argument.
     const crawler = new Apify.CheerioCrawler({
         requestQueue,
-        handlePageFunction,
+        handlePageFunction: async ({ request, response, body, $ }) => {
+            const dataset = await Apify.openDataset();
+
+            const data = {
+                searchQuery: {
+                    term: input.query
+                },
+                url: url
+            };
+
+            await dataset.pushData(data);
+        },
     });
 
     await crawler.run();
