@@ -3,11 +3,17 @@
   "type": "object",
   "schemaVersion": 1,
   "properties": {
-    "message": {
-      "title": "Message",
+    "query": {
+      "title": "Query",
       "type": "string",
-      "description": "Just enter your hello world message.",
+      "description": "Just enter your query string",
       "editor": "textfield"
+    },
+    "customDataFunction": {
+      "title": "Custom Data Function",
+      "type": "string",
+      "description": "Just enter your Custom Data Function",
+      "editor": "textarea"
     }
   },
   "required": []
